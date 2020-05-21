@@ -1,43 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
 
-class MyComponent extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = {
-        items: []
-      };
-    }
-  
-    componentDidMount() {
-      fetch("https://api.example.com/items")
-        .then(res => res.json())
-        .then(
-          (result) => {
-            this.setState({
-              isLoaded: true,
-              items: result.items
-            });
-          },
-        )
-    }
-  
-    render() {
-      const { items } = this.state;return (
-          <ul>
-            {items.map(item => (
-              <li key={item.name}>
-                {item.name} {item.price}
-              </li>
-            ))}
-          </ul>
-        );
-      }
-    }
-    
-  
-
-  ReactDOM.render(
-    <MyComponent />,
-    document.getElementById('root')
-  );
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+);

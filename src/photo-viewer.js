@@ -5,29 +5,29 @@ class MyComponent extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-        employees: []
+        photos: []
       };
     }
   
     componentDidMount() {
-      fetch("http://dummy.restapiexample.com/api/v1/employees")
+      fetch("http://www.splashbase.co/api/v1/images/latest")
         .then(res => res.json())
         .then(
           (result) => {
             this.setState({
-              employees: result.data
+              photos: result.images
             });
           },
         )
     }
   
     render() {
-      const { employees } = this.state;
+      const { photos } = this.state;
       return (
           <ul>
-            {employees.map(employee => (
-              <li key={employee.id}>
-                {employee.employee_name} {employee.employee_salary}
+            {photos.map(photo => (
+              <li key={photo.id}>
+                <img src={photo.url} alt={photo.id} />
               </li>
             ))}
           </ul>
